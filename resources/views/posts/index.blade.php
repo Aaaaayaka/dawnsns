@@ -41,7 +41,7 @@
                         <div class="modal-inner">
                             <div class="inner-content">
                                 <p class="inner-text"></p>
-                                <a class="btn btn-primary" href="/post/{{ $tweet->id }}/update">更新する</a>
+                                <a class="btn btn-primary" href="/post/{{ $tweet->id }}/update">更新します</a>
                             </div>
                         </div>
                     </div>
