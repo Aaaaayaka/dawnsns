@@ -40,19 +40,18 @@ class PostsController extends Controller
             'created_at'=> now(),
             'updated_at'=> now(),
         ]);
-
         return redirect('/top');
     }
     public function update(Request $request)
     {
         $id = $request->input('id');
-        $up_tweet = $request->input('upTweet');
+        $up_tweet = $request->input('up_tweet');
+        // dd($up_tweet);
         DB::table('posts')
             ->where('id', $id)
             ->update(
-                ['tweet' => $up_tweet]
+                ['posts' => $up_tweet]
             );
-
         return redirect('/top');
     }
     public function delete($id)

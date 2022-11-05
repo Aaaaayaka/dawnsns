@@ -36,11 +36,14 @@ Route::get('/profile','UsersController@profile');
 
 Route::get('/search','UsersController@index');
 
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('/follow-list','followsController@followList');
+Route::get('/follower-list','followsController@followerList');
 
 Route::post('post/create','PostsController@create');
 Route::post('post/update','PostsController@update');
 // Route::get('post/{id}/update', 'PostsController@update');
 Route::get('post/{id}/delete','PostsController@delete');
 
+Route::get('/search','UsersController@search');
+Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
+Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');

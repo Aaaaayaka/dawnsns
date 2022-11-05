@@ -14,10 +14,13 @@
     <link rel="icon" href="画像URL" sizes="16x16" type="image/png" />
     <link rel="icon" href="画像URL" sizes="32x32" type="image/png" />
     <link rel="icon" href="画像URL" sizes="48x48" type="image/png" />
-    <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
+    <link rel="icon" href="画像URL" sizes="62x62" type="image/png" /> 
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <!-- javascript.jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 <body>
     <header>
@@ -25,7 +28,7 @@
             <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="header-right">
                 <div id="">
-                    <p>{{ $user->username }}さん<img src="images/dawn.png"></p>
+                    <p>{{ Auth::user()->username }}さん<img src="images/dawn.png"></p>
                     <div class="menu-trigger">
                         <span>ー</span>
                         <span>ー</span>
@@ -51,19 +54,19 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>{{ $user->username }}さんの</p>
+                <p>{{ Auth::user()->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ $followCount }}名</p>
                 </div>
-                <p class="btn"><a href="/post/follow-list">フォローリスト</a></p>
+                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ $followerCount }}名</p>
                 </div>
-                <p class="btn"><a href="/post/follower-list">フォロワーリスト</a></p>
+                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="">ユーザー検索</a></p>
+            <p class="btn"><a href="/search">ユーザー検索</a></p>
         </div>
     </div>
     <footer>

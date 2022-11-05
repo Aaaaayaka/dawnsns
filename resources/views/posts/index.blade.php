@@ -17,54 +17,25 @@
         <table class='table table-hover'>
 
             @foreach ($tweets as $tweet)
-            <tr>
-                <td>
-                    <img src="/images/{{ $tweet->images }}" alt="">
-                </td>
-                <td>{{ $tweet->username }}</td>
-                <td>{{ $tweet->posts }}</td>
-
-                <body>
-                    <a data-target="edit">編集</a>
-                    <script>
-                        const result = $('a').data('target');
-
-                {!! Form::open(['url' => '/post/update']) !!}
-                <td> <!-- <div class="form-group"> -->
-                    {!! Form::hidden('id', $tweet->id) !!}</td>
-                    <td>{!! Form::input('text', 'up_tweet', $tweet->posts, ['required', 'class' => 'form-control']) !!}</td>
-                <!-- </div> -->
-
-                <td><a href="" class="modalopen" data-target="modal01">
-                        <img class="edit-img" src="images/edit.png" alt="edit"></a></td>
-                    <div class="modal-main js-modal" id="modal01">
-                        <div class="modal-inner">
-                            <div class="inner-content">
-                                <p class="inner-text"></p>
-                                <a class="btn btn-primary" href="/post/{{ $tweet->id }}/update">更新します</a>
-                            </div>
-                        </div>
-                    </div>
-
-                {!! Form::close() !!}
-                        console.log( result );
-                    </script>
-                </body>
-                <td><a class="btn btn-primary" href="/post/{{ $tweet->id }}/update"><img src="images/edit.png"></a></td>
-                <td><a class="btn btn-danger" href="/post/{{ $tweet->id }}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png"></a></td>
-                <td>{{ $tweet->created_at }}</td>
-
-            </tr>
-
+                <tr>
+                    <td>
+                        <img src="/images/{{ $tweet->images }}" alt="">
+                    </td>
+                    <td>{{ $tweet->username }}</td>
+                    <td>{{ $tweet->posts }}</td>
+                    <td><a class="btn-primary" href="/post/{{ $tweet->id }}/update" data-target="{{ $tweet->id }}"><img src="images/edit.png"></a></td>
+                    <td><a class="btn btn-danger" href="/post/{{ $tweet->id }}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png"></a></td>
+                    <td>{{ $tweet->created_at }}</td>
+                </tr>
+                <div class="modal" id="{{ $tweet->id}}">
+                        {!! Form::open(['url' => '/post/update']) !!}
+                        {!! Form::hidden('id', $tweet->id) !!}
+                        {!! Form::input('text', 'up_tweet', $tweet->posts, ['required', 'class' => 'form-control']) !!}
+                        {{Form::submit('送信', ['class'=>'btn btn-primary btn-block'])}}
+                        {!! Form::close() !!}
+                </div>
             @endforeach
 
-
-
-            <!-- 投稿編集機能作り中　この後JS -->
-            <!-- <form method="POST" action="http://localhost:8000/post/update" charset="UTF-8"> -->
-                <!-- <input name="_token" type="hidden" value="xxx"> -->
-                <!-- <input name="" type="submit" value=""> -->
-            <!-- </form> -->
 
         </table>
         </div>
