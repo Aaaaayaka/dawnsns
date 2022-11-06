@@ -20,8 +20,11 @@ class FollowsController extends Controller
             ->get();
             // ddd($tweets);
         $follows = DB::table ('follows')
-            ->where('id,follow')
-            ->first();
+            ->join('users','users.id','=','follows.user_id')
+            ->select('follows.id','users.follow_id','users.images')
+            // ->where('id','follow')
+            // ->first();
+            ->get();
             dd($user);
         return view('follows.followList',['user'=>$user,'tweets'=>$tweets,'follows'=>$follows]);
     }

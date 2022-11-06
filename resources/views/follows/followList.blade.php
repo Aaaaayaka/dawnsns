@@ -1,6 +1,11 @@
 @extends('layouts.login')
 @section('content')
     <div id='container'>
+        <p>Follow list</p>
+            @foreach ($follows as $follow)
+                <img src="/images/{{ $tweet->images }}" alt="">
+            @endforeach
+
         <table class='table table-hover'>
             @foreach ($tweets as $tweet)
                 <tr>
