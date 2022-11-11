@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -20,30 +20,22 @@
     <!--OGPタグ/twitterカード-->
     <!-- javascript.jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
     <header>
         <div id = "head">
-            <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
-            <div id="header-right">
-                <div id="">
-                    <p>{{ Auth::user()->username }}さん<img src="images/dawn.png"></p>
-                    <div class="menu-trigger">
-                        <span>ー</span>
-                        <span>ー</span>
-                    </div>
-                <div>
-                    <ul>
-                        <li><a href="/top">ホーム</a></li>
-                        <li><a href="/profile">プロフィール</a></li>
-                        <li><a href="/logout">ログアウト</a></li>
-                    </ul>
-                    <!--<ul>
-                        <li><a href="/top">ホーム</a></li>
-                        <li><a href="/profile">プロフィール</a></li>
-                        <li><a href="/logout">ログアウト</a></li>
-                    </ul>-->
+            <h1><a href="/top"><img src="{{ asset('images/main_logo.png') }}"></a></h1>
+            <div id="category">
+                <ul id="menu">
+                    <li><div class="main_name">{{ Auth::user()->username }}さん<img src="{{ asset('images/' . Auth::user()->images) }}"></div>
+                        <ul id="sub_menu">
+                            <li><a href="/top">HOME</a></li>
+                            <li><a href="/profileEdit">プロフィール編集</a></li>
+                            <li><a href="/auth/login">ログアウト</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>

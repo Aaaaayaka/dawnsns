@@ -3,19 +3,17 @@
     <div id='container'>
         <p>Follow list</p>
             @foreach ($follows as $follow)
-                <img src="/images/{{ $tweet->images }}" alt="">
+                <a href="/profile/{{ $follow->id }}"><img src="/images/{{ $follow->images }}" alt="フォローリスト"></a>
             @endforeach
 
         <table class='table table-hover'>
             @foreach ($tweets as $tweet)
                 <tr>
                     <td>
-                        <img src="/images/{{ $tweet->images }}" alt="">
+                        <a href="/profile/{{ $tweet->id }}"><img src="/images/{{ $tweet->images }}" alt="フォローアイコン"></a>
                     </td>
                     <td>{{ $tweet->username }}</td>
                     <td>{{ $tweet->posts }}</td>
-                    <td><a class="btn-primary" href="/post/{{ $tweet->id }}/update" data-target="{{ $tweet->id }}"><img src="images/edit.png"></a></td>
-                    <td><a class="btn btn-danger" href="/post/{{ $tweet->id }}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png"></a></td>
                     <td>{{ $tweet->created_at }}</td>
                 </tr>
                 <div class="modal" id="{{ $tweet->id}}">

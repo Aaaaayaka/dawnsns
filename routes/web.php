@@ -32,7 +32,10 @@ Route::get('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 Route::get('/top','PostsController@index');
 
-Route::get('/profile','UsersController@profile');
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/profile/{user}','UsersController@profile');
+Route::get('/profileEdit','UsersController@profileEdit');
 
 Route::get('/search','UsersController@index');
 

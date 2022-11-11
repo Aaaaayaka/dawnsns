@@ -16,16 +16,14 @@ class FollowsController extends Controller
             // dd($user);
         $tweets = DB::table ('posts')
             ->join('users','users.id','=','posts.user_id')
-            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->select('posts.user_id', 'posts.posts', 'posts.created_at', 'users.id', 'users.username', 'users.images')
             ->get();
             // ddd($tweets);
         $follows = DB::table ('follows')
-            ->join('users','users.id','=','follows.user_id')
-            ->select('follows.id','users.follow_id','users.images')
-            // ->where('id','follow')
-            // ->first();
+            ->join('users','users.id','=','follows.follow')
+            ->select('users.id', 'follows.follow','users.images')
             ->get();
-            dd($user);
+            //dd($user);
         return view('follows.followList',['user'=>$user,'tweets'=>$tweets,'follows'=>$follows]);
     }
     public function followerList(){
@@ -34,8 +32,12 @@ class FollowsController extends Controller
         ->first();
         $tweets = DB::table ('posts')
             ->join('users','users.id','=','posts.user_id')
-            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->select('posts.user_id', 'posts.posts', 'posts.created_at', 'users.id', 'users.username', 'users.images')
             ->get();
-        return view('follows.followerList',['user'=>$user,'tweets'=>$tweets]);
+        $follows = DB::table ('follows')
+            ->join('users','users.id','=','follows.follower')
+            ->select('users.id', 'follows.follower','users.images')
+            ->get();
+        return view('follows.followerList',['user'=>$user,'tweets'=>$tweets,'follows'=>$follows]);
     }
 }

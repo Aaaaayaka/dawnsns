@@ -9,11 +9,20 @@ use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
     //
-    public function profile(){
+    public function profile(Int $user){
         $user = DB::table ('users')
-        ->where('id', Auth::id())
+        ->where('id', $user, 'users.name')
         ->first();
-        return view('users.profile',compact('user'));
+        $userTweets = DB::table ('posts')
+        ->join('users','users.id','=','posts.user_id')
+        ->select('posts.user_id', 'posts.posts', 'posts.created_at', 'users.id', 'users.username', 'users.images')
+        ->get();
+        return view('users.profile',compact('user', 'userTweets'));
+    }
+
+    public function profileEdit(){
+        $user = Auth::user();
+        return view('users.profileEdit',compact('user'));
     }
     public function search(){
         $users = DB::table('users')

@@ -7,11 +7,55 @@ body{
 header{
     background:#3C4767;
 }
+#head{
+    display: flex;
+    text-align: left;
+}
+h1{
+    padding: 20px 100px 20px 50px;
+}
+
+ul, li{
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+#category {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	width: 250px;
+}
+#category a {
+	text-decoration: none;
+	color: rgb(0, 0, 0);
+}
+#category a:hover {
+	color: #414040;
+}
+#menu {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(0, 0, 0);
+}
+#sub_menu li a{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #ffffff;
+	display: block;
+    text-align: center;
+	position: relative;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: rgb(0, 0, 0);
+}
+#sub_menu li a:hover{
+	background-color: #ff6f00;
+}
 
 #header-right{
     text-align: right;
+    padding: 10px 10px 10px 800px;
 }
-
 
 /* main content */
 #row{

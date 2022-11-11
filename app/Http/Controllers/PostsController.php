@@ -22,13 +22,6 @@ class PostsController extends Controller
             // ddd($tweets);
         return view('posts.index',['user'=>$user,'tweets'=>$tweets]);
     }
-    // public function createForm()
-    // {
-        // $user = DB::table ('users')
-        // ->where('id', Auth::id())
-        // ->first();
-        // return view('posts.createForm',['user'=>$user]);
-    // }
 
     public function create(Request $request)
     {

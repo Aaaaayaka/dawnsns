@@ -3,13 +3,23 @@
 @section('content')
 
 <div id='container'>
-    <img src="/images/{{ Auth::user()->images }}" alt="">
-    <p>UserName</p>
-    <p>MailAddress</p>
-    <p>Password</p>
-    <p>new Password</p>
+    <img src="/images/{{ $user->images }}" alt="">
+    <p>Name</p>
+        <div class="main_name">{{ $user->username }}さん</div>
     <p>Bio</p>
-    <p>Icon Image</p>
+    <table>
+    @foreach ($userTweets as $userTweet)
+        <tr>
+            <td>
+                <img src="/images/{{ $userTweet->images }}" alt="">
+            </td>
+            <td>{{ $userTweet->username }}</td>
+            <td>{{ $userTweet->posts }}</td>
+            <td>{{ $userTweet->created_at }}</td>
+        </tr>
+    @endforeach
+    </table>
+
     <form action="" method="post">
         <input type="submit" value="更新する">
     </form>
