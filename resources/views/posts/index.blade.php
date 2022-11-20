@@ -27,7 +27,7 @@
                     <td><a class="btn btn-danger" href="/post/{{ $tweet->id }}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png"></a></td>
                     <td>{{ $tweet->created_at }}</td>
                 </tr>
-                <div class="modal" id="{{ $tweet->id}}">
+                <div class="modal" id="{{ $tweet->id }}">
                         {!! Form::open(['url' => '/post/update']) !!}
                         {!! Form::hidden('id', $tweet->id) !!}
                         {!! Form::input('text', 'up_tweet', $tweet->posts, ['required', 'class' => 'form-control']) !!}

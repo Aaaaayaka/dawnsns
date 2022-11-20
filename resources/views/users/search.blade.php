@@ -21,7 +21,7 @@
                     <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="post">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="フォロー外す">
+                        <input type="submit" value="フォローはずす">
                     </form>
                 </td>
                 @else

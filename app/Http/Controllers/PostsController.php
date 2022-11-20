@@ -39,7 +39,7 @@ class PostsController extends Controller
     {
         $id = $request->input('id');
         $up_tweet = $request->input('up_tweet');
-        // dd($up_tweet);
+        dd($up_tweet);
         DB::table('posts')
             ->where('id', $id)
             ->update(

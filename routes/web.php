@@ -33,10 +33,12 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::get('/top','PostsController@index');
 
 Route::get('/logout', 'Auth\LoginController@logout');
-
+//各アイコンからユーザー情報への遷移
 Route::get('/profile/{user}','UsersController@profile');
+//プロフィール画面遷移
 Route::get('/profileEdit','UsersController@profileEdit');
-
+Route::post('/profileEdit/update','UsersController@profileUpdate');
+//検索画面遷移
 Route::get('/search','UsersController@index');
 
 Route::get('/follow-list','followsController@followList');

@@ -24,6 +24,53 @@ class UsersController extends Controller
         $user = Auth::user();
         return view('users.profileEdit',compact('user'));
     }
+
+    public function profileUpdate(Request $request)
+    {
+        $username = $request->input('username');
+        $mail = $request->input('mail');
+        $password = $request->input('password');
+        $bio = $request->input('bio');
+        $image = $request->input('image');
+        //dd($image);
+
+        DB::table('users')
+            ->where('id', Auth::id())
+            ->update([
+                'username' => $username,
+                'mail' => $mail,
+        ]);
+
+        // もし$passwordに値があったら
+        if($request->password){
+        DB::table('users')
+        ->where('id', Auth::id())
+        ->update([
+           'password' => $password,
+        ]);
+        }
+
+        // もし$bioに値があったら
+        if($request->bio){
+        DB::table('users')
+        ->where('id', Auth::id())
+        ->update([
+            'bio' => $bio,
+        ]);
+        }
+
+        // もし$imageに値があったら
+        if($request->image){
+        DB::table('users')
+        ->where('id', Auth::id())
+        ->update([
+            'image' =>$image,
+        ]);
+        }
+        return redirect('/top');
+    }
+
+
     public function search(){
         $users = DB::table('users')
         ->leftjoin('follows','users.id','follows.follower')
