@@ -31,7 +31,7 @@
                         {!! Form::open(['url' => '/post/update']) !!}
                         {!! Form::hidden('id', $tweet->id) !!}
                         {!! Form::input('text', 'up_tweet', $tweet->posts, ['required', 'class' => 'form-control']) !!}
-                        {{Form::submit('送信', ['class'=>'btn btn-primary btn-block'])}}
+                        {{Form::submit('送信')}}
                         {!! Form::close() !!}
                 </div>
             @endforeach

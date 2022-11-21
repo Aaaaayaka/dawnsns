@@ -7,6 +7,7 @@
     <p>Name</p>
         <div class="main_name">{{ $user->username }}さん</div>
     <p>Bio</p>
+        <div class="bio">{{ $user->bio }}</div>
     <table>
     @foreach ($userTweets as $userTweet)
         <tr>

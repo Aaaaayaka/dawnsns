@@ -18,6 +18,7 @@ class PostsController extends Controller
         $tweets = DB::table ('posts')
             ->join('users','users.id','=','posts.user_id')
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            // ->sortByDesc('created_at')
             ->get();
             // ddd($tweets);
         return view('posts.index',['user'=>$user,'tweets'=>$tweets]);
@@ -39,7 +40,7 @@ class PostsController extends Controller
     {
         $id = $request->input('id');
         $up_tweet = $request->input('up_tweet');
-        dd($up_tweet);
+        //dd($up_tweet);
         DB::table('posts')
             ->where('id', $id)
             ->update(
