@@ -99,4 +99,16 @@ class UsersController extends Controller
         ->delete();
             return back();
     }
+
+    public function show(User $user)
+    {
+        $user = User::find($user->id);
+        $userTweets = Post::where('user_id', $user->id);
+        dd($users);
+        return view('users.show', [
+            'user_name' => $user->name,
+            'posts' => $userTweets,
+        ]);
+    }
+
 }

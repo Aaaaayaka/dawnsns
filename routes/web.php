@@ -52,3 +52,7 @@ Route::get('post/{id}/delete','PostsController@delete');
 Route::get('/search','UsersController@search');
 Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
 Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
+
+// 選択したユーザーの投稿のみ表示
+Route::get('/profile/{user}','UsersController@show');
+// Route::resource('users/{user}', 'UsersController', ['only' => ['show']]);

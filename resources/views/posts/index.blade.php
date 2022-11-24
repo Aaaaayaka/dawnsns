@@ -23,8 +23,12 @@
                     </td>
                     <td>{{ $tweet->username }}</td>
                     <td>{{ $tweet->posts }}</td>
+                    @if (Auth::user()->id == $tweet->user_id)
                     <td><a class="btn-primary" href="/post/{{ $tweet->id }}/update" data-target="{{ $tweet->id }}"><img src="images/edit.png"></a></td>
+                    @endif
+                    @if (Auth::user()->id == $tweet->user_id)
                     <td><a class="btn btn-danger" href="/post/{{ $tweet->id }}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="images/trash.png"></a></td>
+                    @endif
                     <td>{{ $tweet->created_at }}</td>
                 </tr>
                 <div class="modal" id="{{ $tweet->id }}">
@@ -40,3 +44,6 @@
         </table>
         </div>
 @endsection
+
+
+
