@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Post;
 
 class UsersController extends Controller
 {
@@ -103,12 +105,16 @@ class UsersController extends Controller
     public function show(User $user)
     {
         $user = User::find($user->id);
-        $userTweets = Post::where('user_id', $user->id);
-        dd($users);
-        return view('users.show', [
+        $userTweets = DB::table ('posts')
+            ->where('user_id', $user->id)
+            ->join('users','users.id','=','posts.user_id')
+            ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
+            ->latest()
+            ->get();
+        return view('users.profile',[
             'user_name' => $user->name,
-            'posts' => $userTweets,
-        ]);
+            'userTweets' => $userTweets,
+            'user'=> $user
+            ]);
     }
-
 }

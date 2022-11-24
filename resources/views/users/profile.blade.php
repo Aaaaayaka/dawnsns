@@ -20,10 +20,6 @@
         </tr>
     @endforeach
     </table>
-
-    <form action="" method="post">
-        <input type="submit" value="更新する">
-    </form>
 </div>
 
 @endsection
