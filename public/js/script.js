@@ -37,3 +37,15 @@ $(function (){
         }
     });
 });
+
+$(function(){
+    $(".trash-image").hover(
+    function(){
+        $(".trash-image").fadeOut('slow');
+        $(".trash-hidden").fadeIn('slow');
+    },
+    function() {
+        $(".trash-hidden").fadeOut('slow');
+        $(".trash-image").fadeIn('slow');
+    });
+});

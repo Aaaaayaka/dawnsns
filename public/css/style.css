@@ -105,6 +105,9 @@ display: initial!important;
 	width:200px;
 	height:100px;
 }
+.trash-hidden{
+	display: none;
+}
 
 /* side-bar */
 .btn-design{
@@ -117,3 +120,4 @@ display: initial!important;
     border: none;
     letter-spacing: 1.4px;
 }
+

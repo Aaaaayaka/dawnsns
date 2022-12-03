@@ -3,12 +3,13 @@
 @section('content')
 
 <div id='container'>
-        {!! Form::open(['url' => 'post/create']) !!}
-            <div class="form-group">
-                    {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => 'ユーザー名']) !!}
-            </div>
-            <input type="image" src="images/post.png" alt="ユーザー名">
-        {!! Form::close() !!}
+        <form action="{{ url('/search')}}" method="post">
+            <input type="text" value="{{ $keyword }}" placeholder="ユーザー名">
+            {{ csrf_field()}}
+            {{method_field('get')}}
+            <input type="image" src="images/search.png" alt="ユーザー名">
+        </form>
+
         <table>
         @foreach ($users as $user)
             <tr>

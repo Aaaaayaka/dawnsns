@@ -117,4 +117,14 @@ class UsersController extends Controller
             'user'=> $user
             ]);
     }
+    public function index(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $query = User::query();
+        if(!empty($keyword)) {
+            $query->where('username', 'LIKE', "%{$keyword}%");
+        }
+        $users = $query->get();
+        return view('users.search', compact('users', 'keyword'));
+    }
 }

@@ -17,11 +17,11 @@
 
     <p>Password</p>
     {{ Form::label('パスワード') }}
-    {{ Form::text('password',$user->password,['class' => 'input']) }}
+    {{ Form::input('password', 'password', $user->password, ['class' => 'input']) }}
 
     <p>new Password</p>
     {{ Form::label('新パスワード') }}
-    {{ Form::text('new-password',null,['class' => 'input']) }}
+    {{ Form::input('password', 'new-password', null, ['class' => 'input']) }}
 
     <p>Bio</p>
     {{ Form::label('自己紹介') }}
