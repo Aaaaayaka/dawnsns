@@ -1,17 +1,15 @@
 @extends('layouts.login')
 
 @section('content')
-     <h1><a><img src="images/dawn.png"></a></h1>
+     <h1><a><img src="images/dawn.png" class=image_circle></a></h1>
         <!-- <p class="pull-right"><a class="btn btn-success" href="post/create-form"><img src="images/post.png"></a></p> -->
         <div id='container'>
                 <h2 class='page-header'></h2>
-                    {!! Form::open(['url' => 'post/create']) !!}
+                    {!! Form::open(['url' => 'post/create', 'class' => 'form-input']) !!}
                         <div class="form-group">
                             {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？']) !!}
                         </div>
-                        <!-- <button type="submit" class="btn btn-success pull-right"><img src="images/post.png"></button> -->
-                        <!-- <a type="submit" class="btn btn-success pull-right"><img src="images/post.png"></a> -->
-                        <input type="image" src="images/post.png" alt="投稿ボタン">
+                        <input type="image" src="images/post.png" class=image_post alt="投稿ボタン">
                     {!! Form::close() !!}
 
         <table class='table table-hover'>
@@ -19,7 +17,7 @@
             @foreach ($tweets as $tweet)
                 <tr>
                     <td>
-                        <img src="/images/{{ $tweet->images }}" alt="">
+                        <img src="/images/{{ $tweet->images }}" alt="" class=image_circle>
                     </td>
                     <td>{{ $tweet->username }}</td>
                     <td>{{ $tweet->posts }}</td>

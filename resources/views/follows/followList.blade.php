@@ -10,7 +10,7 @@
             @foreach ($tweets as $tweet)
                 <tr>
                     <td>
-                        <a href="/profile/{{ $tweet->id }}"><img src="/images/{{ $tweet->images }}" alt="フォローアイコン"></a>
+                    <a href="/profile/{{ $tweet->id }}"><img src="/images/{{ $tweet->images }}" alt="フォローアイコン"></a>
                     </td>
                     <td>{{ $tweet->username }}</td>
                     <td>{{ $tweet->posts }}</td>

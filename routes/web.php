@@ -28,11 +28,11 @@ Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
 
-
 //ログイン中のページ
 Route::get('/top','PostsController@index');
 
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::post('/logout', 'Auth\LoginController@logout');
 //各アイコンからユーザー情報への遷移
 Route::get('/profile/{user}','UsersController@profile');
 //プロフィール画面遷移

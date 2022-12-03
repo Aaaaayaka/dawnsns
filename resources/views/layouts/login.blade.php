@@ -26,16 +26,18 @@
     <header>
         <div id = "head">
             <h1><a href="/top"><img src="{{ asset('images/main_logo.png') }}"></a></h1>
-            <div id="category">
-                <ul id="menu">
-                    <li><div class="main_name">{{ Auth::user()->username }}さん<img src="{{ asset('images/' . Auth::user()->images) }}"></div>
-                        <ul id="sub_menu">
-                            <li><a href="/top">HOME</a></li>
-                            <li><a href="/profileEdit">プロフィール編集</a></li>
-                            <li><a href="/auth/login">ログアウト</a></li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="category">
+                <div class="main-name">{{ Auth::user()->username }}さん
+                    <div class="arrow-btn">∨</div>
+                    <img src="{{ asset('images/' . Auth::user()->images) }}" class=image_circle>
+                </div>
+                <div class="sub-menu">
+                    <ul>
+                        <li><a href="/top">HOME</a></li>
+                        <li><a href="/profileEdit">プロフィール編集</a></li>
+                        <li><a href="/logout">ログアウト</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
@@ -51,14 +53,14 @@
                 <p>フォロー数</p>
                 <p>{{ $followCount }}名</p>
                 </div>
-                <p class="btn"><a href="/follow-list">フォローリスト</a></p>
+                <a href="/follow-list" class="btn-design">フォローリスト</a>
                 <div>
                 <p>フォロワー数</p>
                 <p>{{ $followerCount }}名</p>
                 </div>
-                <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
+                <a href="/follower-list" class="btn-design">フォロワーリスト</a>
             </div>
-            <p class="btn"><a href="/search">ユーザー検索</a></p>
+            <a href="/search" class="btn-design">ユーザー検索</a>
         </div>
     </div>
     <footer>

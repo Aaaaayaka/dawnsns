@@ -16,13 +16,24 @@ $(function (){
 
 
 $(function(){
-    $('.sub_menu').hide();
-    $('.main_menu').click(function(){
-     $('ul.sub_menu').slideUp();
-     $('.main_menu').removeClass('open');
-     if($('+ul.sub_menu',this).css('display') == 'none'){
-      $('+ul.sub_menu',this).slideDown();
+    $('.sub-menu').hide();
+    $('.main-menu').click(function(){
+     $('ul.sub-menu').slideUp();
+     $('.main-menu').removeClass('open');
+     if($('+ul.sub-menu',this).css('display') == 'none'){
+      $('+ul.sub-menu',this).slideDown();
       $(this).addClass('open');
      }
     });
-   });
+});
+
+$(function (){
+    $('.arrow-btn').click(function (){
+        $(this).toggleClass('active');
+        if ($(this).hasClass('active')){
+            $('.sub-menu').addClass('active');
+        } else {
+            $('.sub-menu').removeClass('active');
+        }
+    });
+});
