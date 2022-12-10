@@ -3,34 +3,36 @@
 @section('content')
 
 <div id='container'>
-    <img src="/images/{{ $user->images }}" alt="">
+    <div class="profile-icon">
+        <img src="/images/{{ $user->images }}" alt="" class="image_circle">
+    </div>
 
     {!! Form::open(['url' => '/profileEdit/update']) !!}
 
-    <p>UserName</p>
+    <p class="profile-font">UserName</p>
     {{ Form::label('ユーザー名') }}
     {{ Form::text('username',$user->username,['class' => 'input']) }}
-
-    <p>MailAddress</p>
+    <br>
+    <p class="profile-font">MailAddress</p>
     {{ Form::label('メールアドレス') }}
     {{ Form::text('mail',$user->mail,['class' => 'input']) }}
-
-    <p>Password</p>
+    <br>
+    <p class="profile-font">Password</p>
     {{ Form::label('パスワード') }}
     {{ Form::input('password', 'password', $user->password, ['class' => 'input']) }}
-
-    <p>new Password</p>
+    <br>
+    <p class="profile-font">new Password</p>
     {{ Form::label('新パスワード') }}
     {{ Form::input('password', 'new-password', null, ['class' => 'input']) }}
-
-    <p>Bio</p>
+    <br>
+    <p class="profile-font">Bio</p>
     {{ Form::label('自己紹介') }}
-    {{ Form::text('bio',$user->bio,['class' => 'input']) }}
-
-    <p>Icon Image</p>
+    {{ Form::text('bio',$user->bio,['class' => 'input', 'id' => 'bio']) }}
+    <br>
+    <p class="profile-font">Icon Image</p>
     {{ Form::label('アイコン') }}
-    {{ Form::text('icon',$user->image,['class' => 'input']) }}
-
+    {{ Form::text('icon',$user->image,['class' => 'input', 'id' => 'icon-image']) }}
+    <br>
     {{ Form::submit('更新', ['class'=>'update_btn']) }}
 
     {!! Form::close() !!}

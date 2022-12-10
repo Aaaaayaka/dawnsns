@@ -40,6 +40,7 @@ Route::get('/profileEdit','UsersController@profileEdit');
 Route::post('/profileEdit/update','UsersController@profileUpdate');
 //検索画面遷移
 Route::get('/search','UsersController@index');
+Route::post('/search','UsersController@index');
 
 Route::get('/follow-list','followsController@followList');
 Route::get('/follower-list','followsController@followerList');
@@ -49,7 +50,6 @@ Route::post('post/update','PostsController@update');
 // Route::get('post/{id}/update', 'PostsController@update');
 Route::get('post/{id}/delete','PostsController@delete');
 
-Route::get('/search','UsersController@search');
 Route::post('users/{user}/follow', 'UsersController@follow')->name('follow');
 Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfollow');
 
@@ -57,4 +57,3 @@ Route::delete('users/{user}/unfollow', 'UsersController@unfollow')->name('unfoll
 Route::get('/profile/{user}','UsersController@show');
 // Route::resource('users/{user}', 'UsersController', ['only' => ['show']]);
 
-Route::get('/search','UsersController@index')->name('index');

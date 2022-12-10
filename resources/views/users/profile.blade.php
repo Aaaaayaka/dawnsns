@@ -3,38 +3,44 @@
 @section('content')
 
 <div id='container'>
-    <img src="/images/{{ $user->images }}" alt="">
-    <p>Name</p>
-        <div class="main_name">{{ $user->username }}さん</div>
-    <p>Bio</p>
-        <div class="bio">{{ $user->bio }}</div>
+    <div class="profile-head">
+        <div class="profile">
+            <img src="/images/{{ $user->images }}" alt="" class="image_circle">
+        </div>
+        <span class="profile-text">Name</span>
+            <div class="main_name">{{ $user->username }}</div>
+        <span class="profile-text">Bio</span>
+            <div class="bio">{{ $user->bio }}</div>
+    </div>
 
     @if ($following->contains($user->id))
         <td>
             <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="post">
                 @csrf
                 @method('delete')
-                <input type="submit" value="フォローはずす">
+                <input type="submit" value="フォローをはずす" class="profile-btn1">
             </form>
         </td>
     @else
         <td>
             <form action="{{ route('follow', ['user' => $user->id]) }}" method="post">
                 @csrf
-                <input type="submit" value="フォローする">
+                <input type="submit" value="フォローする" class="profile-btn2">
             </form>
         </td>
     @endif
 
-    <table>
+    <table class='table table-hover'>
     @foreach ($userTweets as $userTweet)
         <tr>
             <td>
-                <img src="/images/{{ $userTweet->images }}" alt="">
+                <div id="icon">
+                <img src="/images/{{ $userTweet->images }}" alt="" class=image_circle>
+                </div>
             </td>
-            <td>{{ $userTweet->username }}</td>
-            <td>{{ $userTweet->posts }}</td>
-            <td>{{ $userTweet->created_at }}</td>
+            <td class="username">{{ $userTweet->username }}</td>
+            <td class="tweet">{{ $userTweet->posts }}</td>
+            <td class="date">{{ $userTweet->created_at }}</td>
         </tr>
     @endforeach
     </table>

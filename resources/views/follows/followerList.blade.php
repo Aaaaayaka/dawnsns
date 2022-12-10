@@ -1,20 +1,23 @@
 @extends('layouts.login')
 @section('content')
     <div id='container'>
-        <p>Follower list</p>
+        <p class=heading>Follower list</p>
+        <div class="icon-list">
             @foreach ($follows as $follower)
-                <a href="/profile/{{ $follower->id }}"><img src="/images/{{ $follower->images }}" alt="フォロワーリスト"></a>
+                <a href="/profile/{{ $follower->id }}"><img src="/images/{{ $follower->images }}" alt="フォロワーリスト" class=image_circle></a>
             @endforeach
-
+        </div>
         <table class='table table-hover'>
             @foreach ($tweets as $tweet)
-                <tr>
+                <tr class="line">
                     <td>
-                        <a href="/profile/{{ $tweet->id }}"><img src="/images/{{ $tweet->images }}" alt="フォロワーアイコン"></a>
+                    <div id="icon">
+                    <a href="/profile/{{ $tweet->id }}"><img src="/images/{{ $tweet->images }}" alt="フォロワーアイコン" class=image_circle></a>
+                    </div>
                     </td>
-                    <td>{{ $tweet->username }}</td>
-                    <td>{{ $tweet->posts }}</td>
-                    <td>{{ $tweet->created_at }}</td>
+                    <td class="username">{{ $tweet->username }}</td>
+                    <td class="tweet">{{ $tweet->posts }}</td>
+                    <td class="date">{{ $tweet->created_at }}</td>
                 </tr>
                 <div class="modal" id="{{ $tweet->id}}">
                         {!! Form::open(['url' => '/post/update']) !!}

@@ -64,7 +64,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'mail' => $data['mail'],
             'password' => bcrypt($data['password']),
         ]);
@@ -86,7 +86,7 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        return view('layouts.login');
+        return view('auth.added');
     }
 
     //登録されたユーザーを表示したかった↓
