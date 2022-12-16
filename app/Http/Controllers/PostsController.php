@@ -12,9 +12,9 @@ class PostsController extends Controller
     //
     public function index(){
         $user = DB::table ('users')
-        ->where('id', Auth::id())
-        ->first();
-        // dd($user);
+            ->where('id', Auth::id())
+            ->first();
+            // dd($user);
         $tweets = DB::table ('posts')
             ->join('users','users.id','=','posts.user_id')
             ->select('posts.id', 'posts.user_id', 'posts.posts', 'posts.created_at', 'users.username', 'users.images')
@@ -41,7 +41,6 @@ class PostsController extends Controller
     {
         $id = $request->input('id');
         $up_tweet = $request->input('up_tweet');
-        //dd($up_tweet);
         DB::table('posts')
             ->where('id', $id)
             ->update(
@@ -54,7 +53,6 @@ class PostsController extends Controller
         DB::table('posts')
             ->where('id', $id)
             ->delete();
-
         return redirect('/top');
     }
 
@@ -62,5 +60,10 @@ class PostsController extends Controller
     {
         $this->middleware('auth');
     }
-
+    public function test(){
+        $user = Auth::user();
+        $tweets = DB::table ('posts')
+            ->get();
+        return view('posts.test',['user' => $user, 'tweets' => $tweets]);
+    }
 }

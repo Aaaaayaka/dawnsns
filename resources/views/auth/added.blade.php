@@ -3,9 +3,7 @@
 @section('content')
 
 <div id="clear">
-@auth
-<p>{{ Auth::user()->name }}さん、</p>
-@endauth
+<p>{{ session('name') }}さん</p>
 <p>ようこそ！DAWNSNSへ！</p>
 <p>ユーザー登録が完了しました。</p>
 <p>さっそく、ログインをしてみましょう。</p>

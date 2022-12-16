@@ -31,7 +31,7 @@
     <br>
     <p class="profile-font">Icon Image</p>
     {{ Form::label('アイコン') }}
-    {{ Form::text('icon',$user->image,['class' => 'input', 'id' => 'icon-image']) }}
+    {{ Form::file('icon',$user->image,['class' => 'input', 'id' => 'icon-image']) }}
     <br>
     {{ Form::submit('更新', ['class'=>'update_btn']) }}
 

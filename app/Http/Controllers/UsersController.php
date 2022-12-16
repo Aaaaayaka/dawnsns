@@ -7,18 +7,19 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Post;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
     //
     public function profile(Int $user){
         $user = DB::table ('users')
-        ->where('id', $user, 'users.name')
-        ->first();
+            ->where('id', $user, 'users.name')
+            ->first();
         $userTweets = DB::table ('posts')
-        ->join('users','users.id','=','posts.user_id')
-        ->select('posts.user_id', 'posts.posts', 'posts.created_at', 'users.id', 'users.username', 'users.images')
-        ->get();
+            ->join('users','users.id','=','posts.user_id')
+            ->select('posts.user_id', 'posts.posts', 'posts.created_at', 'users.id', 'users.username', 'users.images')
+            ->get();
         return view('users.profile',compact('user', 'userTweets'));
     }
 
@@ -44,12 +45,11 @@ class UsersController extends Controller
         ]);
 
         // もし$passwordに値があったら
-        if($request->password){
+        if($request->user){
         DB::table('users')
-        ->where('id', Auth::id())
-        ->update([
-           'password' => $password,
-        ]);
+        ->fill([
+            'password' => Hash::make($request->newPassword)
+        ])->save();
         }
 
         // もし$bioに値があったら
@@ -72,14 +72,12 @@ class UsersController extends Controller
         return redirect('/top');
     }
 
-
     public function search(){
         $users = DB::table('users')
-        ->leftjoin('follows','users.id','follows.follower')
-        ->select('users.*','follows.follow','follows.follower')
-        ->groupBy('users.id')
-        ->get();
-        //dd($users);
+            ->leftjoin('follows','users.id','follows.follower')
+            ->select('users.*','follows.follow','follows.follower')
+            ->groupBy('users.id')
+            ->get();
         return view('users.search',compact('users'));
     }
     public function follow(Int $user)
@@ -96,10 +94,10 @@ class UsersController extends Controller
     {
 
         DB::table('follows')
-        ->where('follow', $user)
-        ->where('follower',Auth::id())
-        ->delete();
-            return back();
+            ->where('follow', $user)
+            ->where('follower',Auth::id())
+            ->delete();
+        return back();
     }
 
     public function show(User $user)

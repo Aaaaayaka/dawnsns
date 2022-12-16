@@ -33,8 +33,6 @@
                     </form>
                 </td>
                 @endif
-                <!-- <td><a class="btn btn-primary" href="/search/{{ $user->id }}/users-form">フォローする</a></td> -->
-                <!-- <td><a class="btn btn-primary" href="/search/{{ $user->id }}/users-form">フォローしない</a></td> -->
             </tr>
         @endforeach
         </table>

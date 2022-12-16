@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 {!! Form::open() !!}
 
 <p class=welcome>DAWNSNSへようこそ</p>
